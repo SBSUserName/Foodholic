@@ -8,10 +8,12 @@ function done() {
         selectedFoodArr.push(selectedFoodObj);
     }
 
-    selectedFoodArr.map((food, index) => {
+    selectedFoodArr.map((food) => {
         var row = document.createElement("div");
         row.setAttribute("class", "row container-fluid mx-0 p-0 one-whole-order");
-        row.setAttribute("id", index)
+
+        var idForitem = document.getElementsByClassName("one-whole-order").length;
+        row.setAttribute("id", idForitem);
 
         // icon section
         var icon = document.createElement("div");
@@ -67,7 +69,7 @@ function done() {
         row.appendChild(quantity);
 
         //subtotal section
-        originalPrice[index] = food.price;
+        originalPrice[idForitem] = food.price;
         var subtotal = document.createElement("div");
         subtotal.setAttribute("class", "col-2 p-0 sub-total");
         var price = document.createElement("h5");
@@ -84,7 +86,7 @@ function done() {
         cross.setAttribute("class", "col-1 p-0 cross-sign");
         var i = document.createElement("i");
         i.setAttribute("class", "fas fa-times cross");
-        i.setAttribute("id", index);
+        i.setAttribute("id", idForitem);
         i.setAttribute("onclick", "cancelOrder(id)");
         cross.appendChild(i);
         row.appendChild(cross);
@@ -97,6 +99,8 @@ function done() {
     document.getElementsByClassName("coupon")[0].style.display = "flex";
     selectedFoodArr = [];
     document.getElementById("popups").style.display = "none";
+    idForitem++;
+    console.log("item id is", idForitem);
 
     grandTotalCalculation();
 }
