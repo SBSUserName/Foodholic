@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Asap&display=swap" rel="stylesheet">
+   
+    <!-- Fontawesome -->
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/all.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+
+    <title>Foodholic</title>
+  </head>
+  <body>
+    
+    <div class="main-wrapper">
+        <div class="container-fluid content-body">
+            <div class="row container-fluid m-0 p-0">
+                <!-- Menu Toggle Button for smaller screens -->
+                <button class="menu-toggle-btn" onclick="menuToggle()"><i class="fas fa-bars"></i></button>
+
+                <!-- Side Menu -->
+                <div class="col-md-3 col-sm-4 menu p-0" id="menu">
+                    <h5 class="d-flex justify-content-between title">
+                        <span>Foodholic</span>
+                        <button onclick="menuToggle()"><i class="fas fa-chevron-left mr-2"></i>HIDE</button>
+                    </h5>
+                    
+                    <div class="menu-list">
+                        <div class="option">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </div>
+                        <div class="option">
+                            <i class="fas fa-cube"></i>
+                            <span>Restaurant</span>
+                        </div>
+                        <div class="option cart active">
+                            <div>
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>My Cart</span>
+                            </div>
+                            <div class="items">
+                                <span>4 items</span>
+                            </div>
+                        </div>
+                        <div class="option">
+                            <i class="fas fa-history"></i>
+                            <span>History</span>
+                        </div>
+                        <div class="option">
+                            <i class="fas fa-gift"></i>
+                            <span>Offers</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-bot-option">
+                        <div class="option mb-4">
+                            <i class="far fa-comments"></i>
+                            <span>Customer Support</span>
+                        </div>
+                        <div class="user option">
+                            <div class="row container-fluid mx-0 px-0">
+                                <div class="col-2 p-0">
+                                    <img src="images/demo_rider.jpg" />
+                                </div>
+                                <div class="col-10 d-flex align-items-center justify-content-between">
+                                    <h6 class="sub-header2">Leeroy Jenkins</h6>
+                                    <i class="fas fa-chevron-up"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- All the contents on the right of the menu -->
+                <div class="col-lg-9 col-md-12">
+                    <div class="content">
+                        <div class="mb-3 d-flex justify-content-between added-items">
+                            <h5 class="headline">Added Items</h5>
+                            <div>
+                                <i class="far fa-bell"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="row information">
+                            <!-- Order Section current and previous -->
+                            <div class="col-md-7 col-sm-12">
+                                <div class="orders section-border">
+                                    <h6 class="sub-header mb-4">Order Number <span>#22540</span></h6>
+                                    <div id="listOfOrders" class="my-2"></div>
+                                    <div class="row container-fluid mx-0 p-0 coupon">
+                                        <div class="col-1 p-0 text-center">
+                                            <img src="images/smiley.png" />
+                                        </div>
+                                        <div class="col-6">
+                                            <h5>Any Coupon? Apply here & get discount</h5>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <input type="text" maxlength="7" onkeyup="handleCoupon(event)" />
+                                            <span class="error-message" id="err">Must have 7 characters</span>
+                                        </div>
+                                    </div>
+                                    <button class="add-more-btn" onclick="openFoodPopup('open')">+ Add more items</button>      
+                                </div>
+
+                                <!-- Button to view all food items -->
+                                <div class="mt-3 mb-5">    
+                                    <a href="menu.html" class="menu-btn">View Menu</a>
+                                </div>
+
+                                <!-- Previously Ordered -->
+                                <h5 class="headline mb-3">Previously Ordered Items</h5>
+                                <div class="orders previously">
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="card prev-card">
+                                            <div class="card-header d-flex justify-content-between" id="headingThree">
+                                                <div>
+                                                    <h6 class="mb-0 sub-header d-flex align-items-center">
+                                                        Order Number #45323
+                                                    </h6>
+                                                    <p class="sub-title text-left">APR 10, 2020</p>
+                                                </div>
+                                                
+                                                <div class="d-flex">
+                                                    <h6 class="sub-header d-flex align-items-center mr-4">$70.92</h6>
+                                                    <button 
+                                                        class="btn btn-link text-left collapsed" 
+                                                        type="button" 
+                                                        data-toggle="collapse" 
+                                                        data-target="#collapseThree" 
+                                                        aria-expanded="false" 
+                                                        aria-controls="collapseThree"
+                                                        onclick="accordionClick()"
+                                                    >
+                                                            <i class="fas fa-chevron-down" id="accorI"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="collapseThree" class="collapse prev-card-body" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <p class="sub-title text-left mb-3">Items</p>
+                                                            <h5>Veggie Supreme Pizza</h5>
+                                                            <h5>Choco Moco Latte</h5>
+                                                            <h5>Bacon Wrapped Shrimp</h5>
+                                                        </div>
+                                                        <div class="col-1 p-0">
+                                                            <p class="sub-title text-left mb-3">Qnt</p>
+                                                            <h5>1</h5>
+                                                            <h5>2</h5>
+                                                            <h5>2</h5>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <p class="sub-title text-left mb-2">Restaurant</p>
+                                                            <h5>JJ Diner</h5>
+                                                            <p class="sub-title text-left mb-2">Rider</p>
+                                                            <h5>Ghost</h5>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <p class="sub-title text-left mb-3">Total Price</p>
+                                                            <h6 class="sub-header">$70.92</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Delivery address, payments and grand total Section -->
+                            <div class="col-md-5 col-sm-12">
+                                <div class="section-border payment-section">
+                                    <!-- Deliver Address -->
+                                    <div class="row container-fluid mx-0 px-0 delivery-address">
+                                        <div class="col-1 p-0 text-center d-flex flex-column justify-content-center">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="col-9">
+                                            <p>Delivery address</p>
+                                            <h6>2510 E Sunset Rd Ste 5, NY 89120.</h6>
+                                        </div>
+                                        <div class="col-2 edit">
+                                            <i class="far fa-edit"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Payment Option -->
+                                    <div class="row container-fluid mx-0 px-0 payment-option spacing">
+                                        <div class="col-10">
+                                            <h6 class="sub-header mb-3">Choose Payment Option</h6>
+                                            <div class="row container-fluid mx-0 px-0 mb-3">
+                                                <div class="col-2 p-0">
+                                                    <input type="radio" name="pay" />
+                                                </div>
+                                                <div class="col-10 d-flex">
+                                                    <img src="images/card.png" class="mr-4" />
+                                                    <h6 class="sub-header2">Credit Card</h6>
+                                                </div>
+                                            </div>
+                                            <div class="row container-fluid mx-0 px-0">   
+                                                <div class="col-2 p-0">
+                                                    <input type="radio" name="pay" />
+                                                </div>
+                                                <div class="col-10 d-flex">
+                                                    <img src="images/paypal.png" class="mr-4" />
+                                                    <h6 class="sub-header2">PayPal</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 edit">
+                                            <i class="far fa-edit"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Rider Information -->
+                                    <div class="row container-fluid mx-0 px-0 rider-info spacing">
+                                        <div class="col-10">
+                                            <h6 class="sub-header mb-3">Rider Inforamtion</h6>
+                                            <div class="row container-fluid mx-0 px-0">
+                                                <div class="col-2 p-0">
+                                                    <img src="images/demo_rider.jpg" />
+                                                </div>
+                                                <div class="col-10">
+                                                    <h6 class="sub-header2">Mark Alex</h6>
+                                                    <span class="sub-title">Age: </span>
+                                                    <span>22</span>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="col-2 edit">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                    </div>
+
+                                    <!-- Payable Amount -->
+                                    <div class="row container-fluid mx-0 px-0 payable-amount spacing">
+                                        <div class="col-12">
+                                            <h6 class="sub-header mb-3">Payable Amount</h6>
+                                        </div>
+                                        <div class="pl-2 container-fluid mx-0 px-0">
+                                            <div class="row container-fluid mx-0 px-0">
+                                                <div class="col-7">
+                                                    <span class="sub-title">Sub Total</span>
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    <span class="sub-title" id="st"></span>
+                                                </div>       
+                                            </div>
+                                            <div class="row container-fluid mx-0 px-0">
+                                                <div class="col-7">
+                                                    <span class="sub-title">Delivery Charge</span>
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    <span class="sub-title">$5.00</span>
+                                                </div>       
+                                            </div>
+                                            <div class="row container-fluid mx-0 px-0">
+                                                <div class="col-7">
+                                                    <span class="sub-title">Coupon Applied</span>
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    <span class="sub-title" id="coup"></span>
+                                                </div>       
+                                            </div>
+                                            <hr />
+                                            <div class="row container-fluid mx-0 px-0">
+                                                <div class="col-7">
+                                                    <h6 class="sub-header">Grand Total</h6>
+                                                    <p>(+ VAT)</p>
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    <h6 class="sub-header" id="gt"></h6>
+                                                </div>       
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Confirm order & pay button -->
+                                    <div class="row container-fluid mx-0 px-0 confirm spacing">
+                                        <div class="col-12">
+                                            <button>Confirm order & pay</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup after clicking add item -->
+    <div id="popups">
+        <div class="food-menu text-center">
+            <div class="row container-fluid m-0 p-0">
+                <div class="col-sm-4">
+                    <div id="1" onclick="foodItemSelected(id)">
+                        <img src="images/sandwich.png" />
+                        <h6 class="my-2">Cheesy Veg Sandwich</h6>
+                        <h2>$52.99</h2>
+                       
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div id="2" onclick="foodItemSelected(id)">
+                        <img src="images/burger.png" />
+                        <h6 class="my-2">Chicken Burger</h6>
+                        <h2>$15.05</h2>
+                       
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div id="3" onclick="foodItemSelected(id)">
+                        <img src="images/hotwings.png" />
+                        <h6 class="my-2">Spicy Hotwings</h6>
+                        <h2>$24.00</h2>
+                        
+                    </div>
+                </div>  
+            </div>
+            
+            <div class="mt-4">
+                <button class="btn-success" onclick="done()">Done</button>
+                <button class="btn-danger" onclick="openFoodPopup('close')">Close</button>
+            </div>    
+        </div>    
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script src="js/addItemsDone.js"></script>
+    <script src="js/foodPopup.js"></script>
+    <script src="js/grandTotal.js"></script>
+    <script src="js/handleCoupon.js"></script>
+    <script src="js/miniFunctions.js"></script>
+    <script src="js/orderItemControls.js"></script>
+  </body>
+</html>

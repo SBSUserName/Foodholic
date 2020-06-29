@@ -1,0 +1,31 @@
+* { font-family: 'Asap', sans-serif; }
+
+:root { --text-blue: #748DEC; }
+
+h5, h6, p { margin-bottom: 0; }
+
+img { width: 100%; }
+
+.menu-btn {
+    padding: 0.25rem 2rem;
+    font-size: 13px;
+    background-color: cornflowerblue;
+    color: white;
+}
+.menu-btn:hover { text-decoration: none; }
+
+.menu-toggle-btn { 
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 0px;
+    border: none;
+    padding: 5px 15px;
+    background-color: var(--text-blue);
+    color: white;
+    box-shadow: 0 0 4px 0px rgba(0,0,0,0.5);
+    z-index: 2;
+ }
+
+ .error-message { font-size: 9px; color: red; font-weight: 600; }
+ .hide { display: none;}
