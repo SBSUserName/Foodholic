@@ -99,8 +99,6 @@ function done() {
     document.getElementsByClassName("coupon")[0].style.display = "flex";
     selectedFoodArr = [];
     document.getElementById("popups").style.display = "none";
-    idForitem++;
-    console.log("item id is", idForitem);
 
     grandTotalCalculation();
 }
